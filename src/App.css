@@ -13,11 +13,22 @@ td {
 	transition: all 0.3s;
 	margin-top: 10%;
 }
-.AddCaptureSet {
+.flex-end {
 	display: flex;
 	justify-content: flex-end;
 }
-.AddIcon {
+.justify-between {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.SectionContainer {
+	border: 1px solid lightblue;
+	border-radius: 15px;
+	padding: 16px 0px;
+}
+.Icon {
 	width: 24px;
 	height: 24px;
+	fill: white;
 }

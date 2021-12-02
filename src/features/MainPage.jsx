@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Table, Button, Row, Col } from 'react-bootstrap';
-import deleteIcon from '../assets/delete.svg';
+import { DeleteIcon } from '../assets/DeleteIcon.jsx';
 
 const tableData = [
 	{
@@ -43,18 +43,12 @@ const tableHeaders = [
 export const MainPage = () => {
 	return (
 		<>
-			<Row>
-				<Col>
-					<label>Current Sessions</label>
-				</Col>
-				<Col xs={{ offset: 8 }}>
-					<Button
-						onClick={() => {
-							console.log('Setup Packet Capture clicked');
-						}}
-					>
+			<Row className='mb-4 mt-2'>
+				<Col className='justify-between'>
+					<h3>Current Sessions</h3>
+					<Link to='/add' className='btn btn-primary'>
 						Setup Packet Capture
-					</Button>
+					</Link>
 				</Col>
 			</Row>
 			<Table>
@@ -80,22 +74,27 @@ export const MainPage = () => {
 								<td>{sessionData.date}</td>
 								<td>{sessionData.requestor}</td>
 								<td>
-									<a href='https://download.pcap.a.intuit.net'>cClear</a>
+									<a
+										className='btn btn-primary'
+										href='https://download.pcap.a.intuit.net'
+									>
+										cClear
+									</a>
 								</td>
 								<td>
-									<Link to={`/modify/${sessionData.sessionId}`}>Modify</Link>
+									<Link
+										className='btn btn-primary'
+										to={`/modify/${sessionData.sessionId}`}
+									>
+										Modify
+									</Link>
 								</td>
 								<td>
 									<Link
 										to={`/delete/${sessionData.sessionId}`}
-										className='DeleteButton'
+										className=' btn btn-primary'
 									>
-										<img
-											width='24'
-											height='24'
-											src={deleteIcon}
-											alt={'Remove'}
-										/>
+										<DeleteIcon className='Icon' />
 									</Link>
 								</td>
 							</tr>
