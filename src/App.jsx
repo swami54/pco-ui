@@ -15,7 +15,7 @@ export const App = () => {
 	const [loggedIn, setLoggedIn] = useState(true);
 
 	return (
-		<BrowserRouter className='App'>
+		<BrowserRouter>
 			<Container>
 				{loggedIn ? (
 					<AppRoutes setLoggedIn={setLoggedIn} />
