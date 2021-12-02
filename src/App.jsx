@@ -8,7 +8,7 @@ import { MainPage } from './features/MainPage';
 import { ModifySession } from './features/ModifySession';
 import { ViewSession } from './features/ViewSession';
 import { Login } from './features/Login';
-import { AppNavBar } from './components/nav/AppNavBar';
+import { AppNavBar } from './common/nav/AppNavBar';
 import { Container } from 'react-bootstrap';
 
 export const App = () => {

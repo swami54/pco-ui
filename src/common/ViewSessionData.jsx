@@ -1,3 +1,4 @@
+import React from 'react';
 import {
 	Tabs,
 	Tab,
@@ -7,10 +8,11 @@ import {
 	Form,
 	Container,
 } from 'react-bootstrap';
-
+import Select from 'react-select';
+import { getReactSelectOptions } from '../utils';
 export const ViewSessionData = ({ sessionData }) => {
 	return (
-		<>
+		<Container>
 			<Row className='SectionContainer'>
 				<Col>
 					<FormGroup>
@@ -36,6 +38,17 @@ export const ViewSessionData = ({ sessionData }) => {
 									title={`Capture Set ${index + 1}`}
 									className='mt-4'
 								>
+									<FormGroup readOnly>
+										<Form.Label>EC2 Instance</Form.Label>
+										<Select
+											defaultValue={getReactSelectOptions(
+												captureSet.ec2Instance
+											)}
+											readOnly
+											isMulti
+											isDisabled={true}
+										/>
+									</FormGroup>
 									<FormGroup>
 										<Form.Label>EC2 Instance</Form.Label>
 										<Form.Control
@@ -64,6 +77,6 @@ export const ViewSessionData = ({ sessionData }) => {
 					</Tabs>
 				</Col>
 			</Row>
-		</>
+		</Container>
 	);
 };

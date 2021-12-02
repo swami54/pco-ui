@@ -1,24 +1,21 @@
-import { useEffect, useState } from 'react';
-import { Button, Col, Row } from 'react-bootstrap';
-import { useParams } from 'react-router-dom';
-import { ViewSessionData } from '../components/ViewSessionData';
+import React, { useEffect, useState } from 'react';
+import { Button, Col, Container, Row } from 'react-bootstrap';
+import { ViewSessionData } from '../common/ViewSessionData';
 import { getSampleSessionData } from '../utils';
 
 export function DeleteSession() {
 	const [sessionData, setSessionData] = useState(undefined);
-	const params = useParams();
 
 	useEffect(() => {
-		console.log(params);
 		setSessionData(getSampleSessionData());
 	}, []);
 	if (!sessionData) {
 		return <div>Loading...</div>;
 	}
 	return (
-		<>
+		<Container>
 			<Row>
-				<h3 className="mt-2 mb-4">Delete Session</h3>
+				<h3 className='mt-2 mb-4'>Delete Session</h3>
 			</Row>
 			<ViewSessionData sessionData={sessionData} />
 			<Row className='mt-4'>
@@ -32,6 +29,6 @@ export function DeleteSession() {
 					</Button>
 				</Col>
 			</Row>
-		</>
+		</Container>
 	);
 }

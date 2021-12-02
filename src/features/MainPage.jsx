@@ -1,5 +1,6 @@
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { Table, Button, Row, Col } from 'react-bootstrap';
+import { Table, Row, Col, Container } from 'react-bootstrap';
 import { DeleteIcon } from '../assets/DeleteIcon.jsx';
 
 const tableData = [
@@ -42,7 +43,7 @@ const tableHeaders = [
 
 export const MainPage = () => {
 	return (
-		<>
+		<Container>
 			<Row className='mb-4 mt-2'>
 				<Col className='justify-between'>
 					<h3>Current Sessions</h3>
@@ -102,6 +103,6 @@ export const MainPage = () => {
 					})}
 				</tbody>
 			</Table>
-		</>
+		</Container>
 	);
 };

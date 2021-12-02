@@ -1,11 +1,11 @@
-import { Form, Button } from 'react-bootstrap';
-import { useState } from 'react';
+import { Form, Button, Container } from 'react-bootstrap';
+import React,{ useState } from 'react';
 
 export const Login = ({ setLoggedIn }) => {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 	return (
-		<div className='LoginContainer'>
+		<Container className='LoginContainer'>
 			<h1>PCO UI</h1>
 			<Form
 				onSubmit={(e) => {
@@ -41,6 +41,6 @@ export const Login = ({ setLoggedIn }) => {
 				</Form.Group>
 				<Button type='submit'>Login</Button>
 			</Form>
-		</div>
+		</Container>
 	);
 };

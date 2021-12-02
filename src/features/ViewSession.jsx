@@ -1,15 +1,12 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Row } from 'react-bootstrap';
-import { useParams } from 'react-router-dom';
-import { ViewSessionData } from '../components/ViewSessionData';
+import { ViewSessionData } from '../common/ViewSessionData';
 import { getSampleSessionData } from '../utils';
 
 export function ViewSession() {
 	const [sessionData, setSessionData] = useState(undefined);
-	const params = useParams();
 
 	useEffect(() => {
-		console.log(params);
 		setSessionData(getSampleSessionData());
 	}, []);
 

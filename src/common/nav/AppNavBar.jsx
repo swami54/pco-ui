@@ -1,3 +1,4 @@
+import React from 'react'
 import { Button, Container, Navbar } from 'react-bootstrap';
 export const AppNavBar = ({ setLoggedIn }) => {
 	return (
