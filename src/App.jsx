@@ -8,7 +8,6 @@ import { MainPage } from './features/MainPage';
 import { ModifySession } from './features/ModifySession';
 import { ViewSession } from './features/ViewSession';
 import { Login } from './features/Login';
-import { AppNavBar } from './common/nav/AppNavBar';
 import { Container } from 'react-bootstrap';
 
 export const App = () => {
@@ -41,5 +40,23 @@ export const AppRoutes = ({ setLoggedIn }) => {
 				</Routes>
 			</Container>
 		</>
+	);
+};
+const AppNavBar = ({ setLoggedIn }) => {
+	return (
+		<Navbar>
+			<Container>
+				<Navbar.Brand>
+					<h1>PCO-UI</h1>
+				</Navbar.Brand>
+				<Button
+					onClick={() => {
+						setLoggedIn(false);
+					}}
+				>
+					SignOut
+				</Button>
+			</Container>
+		</Navbar>
 	);
 };

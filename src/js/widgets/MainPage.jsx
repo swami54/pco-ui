@@ -1,7 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { Table, Row, Col, Container } from 'react-bootstrap';
 import { DeleteIcon } from '../assets/DeleteIcon.jsx';
+import { AppNavLink } from '../common/NavLink.jsx';
 
 const tableData = [
 	{
@@ -47,9 +47,9 @@ export const MainPage = () => {
 			<Row className='mb-4 mt-2'>
 				<Col className='justify-between'>
 					<h3>Current Sessions</h3>
-					<Link to='/add' className='btn btn-primary'>
+					<AppNavLink to='/add' className='btn btn-primary'>
 						Setup Packet Capture
-					</Link>
+					</AppNavLink>
 				</Col>
 			</Row>
 			<Table>
@@ -65,9 +65,9 @@ export const MainPage = () => {
 						return (
 							<tr key={sessionData.sessionId}>
 								<td>
-									<Link to={`/view/${sessionData.sessionId}`}>
+									<AppNavLink to={`/view/${sessionData.sessionId}`}>
 										{sessionData.sessionId}
-									</Link>
+									</AppNavLink>
 								</td>
 								<td>{sessionData.account}</td>
 								<td>{sessionData.vpc}</td>
@@ -83,20 +83,20 @@ export const MainPage = () => {
 									</a>
 								</td>
 								<td>
-									<Link
+									<AppNavLink
 										className='btn btn-primary'
 										to={`/modify/${sessionData.sessionId}`}
 									>
 										Modify
-									</Link>
+									</AppNavLink>
 								</td>
 								<td>
-									<Link
+									<AppNavLink
 										to={`/delete/${sessionData.sessionId}`}
 										className=' btn btn-primary'
 									>
 										<DeleteIcon className='Icon' />
-									</Link>
+									</AppNavLink>
 								</td>
 							</tr>
 						);

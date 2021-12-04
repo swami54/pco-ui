@@ -9,7 +9,7 @@ import {
 	Container,
 } from 'react-bootstrap';
 import Select from 'react-select';
-import { getReactSelectOptions } from '../utils';
+import { getReactSelectOptions } from '../../utils';
 export const ViewSessionData = ({ sessionData }) => {
 	return (
 		<Container>
