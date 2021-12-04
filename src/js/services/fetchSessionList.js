@@ -1,5 +1,8 @@
+import { timeDelay } from "../../sample-data";
+import { uuid } from "../util/utils";
+
 export const fetchSessionList = async () => {
-	await setTimeout(() => {}, 2000);
+	await timeDelay();
 	return [
 		{
 			sessionId: 'session-123',
@@ -8,6 +11,7 @@ export const fetchSessionList = async () => {
 			status: 'Active',
 			date: '24/02/2000',
 			requestor: 'ss3',
+			id: uuid()
 		},
 		{
 			sessionId: 'session-321',
@@ -16,6 +20,7 @@ export const fetchSessionList = async () => {
 			status: 'Active',
 			date: '24/02/2000',
 			requestor: 'ss3',
+			id: uuid()
 		},
 		{
 			sessionId: 'session-322',
@@ -24,6 +29,7 @@ export const fetchSessionList = async () => {
 			status: 'Active',
 			date: '24/02/2000',
 			requestor: 'ss3',
+			id: uuid()
 		},
 	];
 };

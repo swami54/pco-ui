@@ -1,0 +1,7 @@
+id: 'packet-capture-plugin/view-session'
+classification: public
+version: 1.0.0
+interface:
+  description: |
+    view a session
+main: './ViewSession'

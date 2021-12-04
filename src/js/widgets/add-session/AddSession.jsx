@@ -11,21 +11,31 @@ import {
 } from 'react-bootstrap';
 import { AddIcon } from '../../../assets/AddIcon.jsx';
 import { DeleteIcon } from '../../../assets/DeleteIcon.jsx';
-import { SAMPLE_C2_INSTANCE_DATA, getReactSelectOptions, uuid } from '../../util/utils';
+import { getReactSelectOptions, uuid } from '../../util/utils';
 import Select from 'react-select';
+import { fetchEc2InstanceList } from '../../services/fetchEc2InstanceList.js';
+import { fetchRemoteIpList } from '../../services/fetchVPCList.js';
 
 export function AddSession() {
 	const [sessionData, setSessionData] = useState();
 	const [key, setKey] = useState('');
+	const [ec2InstanceList, setEc2InstanceList] = useState([]);
+	const [remoteIps, setRemoteIps] = useState([]);
 
 	useEffect(() => {
+		fetchEc2InstanceList().then((e) => {
+			setEc2InstanceList(getReactSelectOptions(e));
+		});
+		fetchRemoteIpList().then((e) => {
+			setRemoteIps(getReactSelectOptions(e));
+		});
 		const data = {
 			accountId: '',
 			vpc: '',
 			captureSets: [
 				{
 					ec2Instance: [],
-					remoteIps: '',
+					remoteIps: [],
 					requestor: '',
 					id: uuid(),
 				},
@@ -117,9 +127,7 @@ export function AddSession() {
 											<FormGroup>
 												<Form.Label>EC2 Instance</Form.Label>
 												<Select
-													options={getReactSelectOptions(
-														SAMPLE_C2_INSTANCE_DATA
-													)}
+													options={ec2InstanceList}
 													defaultValue={captureSet.ec2Instance.map((e) => {
 														return { value: e, label: e };
 													})}
@@ -133,15 +141,18 @@ export function AddSession() {
 											</FormGroup>
 											<FormGroup>
 												<Form.Label>Remote Ips</Form.Label>
-												<Form.Control
-													defaultValue={captureSet.remoteIps}
-													onChange={(e) => {
+												<Select
+													options={remoteIps}
+													defaultValue={getReactSelectOptions(captureSet.remoteIps)}
+													isMulti
+													onChange={(values) => {
 														const captureSets = sessionData.captureSets;
-														captureSets[index].remoteIps = e.target.value;
+														captureSets[index].remoteIps = values;
 														handleChange({ captureSets });
 													}}
 												/>
 											</FormGroup>
+											
 
 											<FormGroup>
 												<Form.Label>Requestor</Form.Label>

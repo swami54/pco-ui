@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { Row } from 'react-bootstrap';
 import { ViewSessionData } from '../../common/ViewSessionData';
-import { getSampleSessionData } from '../../util/utils';
+import { fetchSessionData } from '../../services/fetchSessionData';
 
 export function ViewSession() {
 	const [sessionData, setSessionData] = useState(undefined);
 
 	useEffect(() => {
-		setSessionData(getSampleSessionData());
+		fetchSessionData('id').then((e) => {
+			setSessionData(e);
+		});
 	}, []);
 
 	if (!sessionData) {

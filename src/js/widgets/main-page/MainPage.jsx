@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Table, Row, Col, Container } from 'react-bootstrap';
 import { DeleteIcon } from '../../../assets/DeleteIcon.jsx';
-import { fetchSessionList } from '../../api/fetch-session-list.js';
+import { fetchSessionList } from '../../services/fetchSessionList.js';
 import { AppNavLink } from '../../common/NavLink.jsx';
 
 const tableHeaders = [
@@ -48,7 +48,11 @@ const SessionsTable = ({ sessionList }) => {
 			<SessionsTableHeaders />
 			<tbody>
 				{sessionList.map((sessionData) => {
-					return <SessionsTableRow sessionData={sessionData} />;
+					return (
+						<tr key={sessionData.id}>
+							<SessionsTableRow sessionData={sessionData} />
+						</tr>
+					);
 				})}
 			</tbody>
 		</Table>
@@ -67,7 +71,7 @@ const SessionsTableHeaders = () => {
 };
 const SessionsTableRow = ({ sessionData }) => {
 	return (
-		<tr key={sessionData.sessionId}>
+		<>
 			<td>
 				<AppNavLink to={`/view/${sessionData.sessionId}`}>
 					{sessionData.sessionId}
@@ -102,6 +106,6 @@ const SessionsTableRow = ({ sessionData }) => {
 					<DeleteIcon className='Icon' />
 				</AppNavLink>
 			</td>
-		</tr>
+		</>
 	);
 };

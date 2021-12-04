@@ -1,0 +1,7 @@
+id: 'packet-capture-plugin/main-page'
+classification: public
+version: 1.0.0
+interface:
+  description: |
+    Shows a list of sessions data
+main: './MainPage'

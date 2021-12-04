@@ -1,0 +1,7 @@
+id: 'packet-capture-plugin/delete-session'
+classification: public
+version: 1.0.0
+interface:
+  description: |
+    Delete a session
+main: './DeleteSession'

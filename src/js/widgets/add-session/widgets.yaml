@@ -1,0 +1,7 @@
+id: 'packet-capture-plugin/add-session'
+classification: public
+version: 1.0.0
+interface:
+  description: |
+    Add a session
+main: './AddSession'

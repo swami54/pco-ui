@@ -49,21 +49,17 @@ export const ViewSessionData = ({ sessionData }) => {
 											isDisabled={true}
 										/>
 									</FormGroup>
-									<FormGroup>
-										<Form.Label>EC2 Instance</Form.Label>
-										<Form.Control
-											readOnly
-											defaultValue={captureSet.ec2Instance}
-										/>
-									</FormGroup>
-									<FormGroup>
+									<FormGroup readOnly>
 										<Form.Label>Remote Ips</Form.Label>
-										<Form.Control
+										<Select
+											defaultValue={getReactSelectOptions(
+												captureSet.remoteIps
+											)}
 											readOnly
-											defaultValue={captureSet.remoteIps}
+											isMulti
+											isDisabled={true}
 										/>
 									</FormGroup>
-
 									<FormGroup>
 										<Form.Label>Requestor</Form.Label>
 										<Form.Control

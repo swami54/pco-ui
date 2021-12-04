@@ -11,18 +11,30 @@ import {
 } from 'react-bootstrap';
 import { AddIcon } from '../../../assets/AddIcon.jsx';
 import { DeleteIcon } from '../../../assets/DeleteIcon.jsx';
-import { SAMPLE_C2_INSTANCE_DATA, getReactSelectOptions, getSampleSessionData, uuid } from '../../util/utils';
+import { getReactSelectOptions, uuid } from '../../util/utils';
 import Select from 'react-select';
+import { fetchSessionData } from '../../services/fetchSessionData.js';
+import { fetchEc2InstanceList } from '../../services/fetchEc2InstanceList.js';
+import { fetchRemoteIpList } from '../../services/fetchVPCList.js';
 
 export function ModifySession() {
 	const [sessionData, setSessionData] = useState();
 	const [key, setKey] = useState('');
-
+	const [ec2InstanceList, setEc2InstanceList] = useState([]);
+	const [remoteIps, setRemoteIps] = useState([]);
+	
 	useEffect(() => {
-		const data = getSampleSessionData();
-		setSessionData(data);
-		if (data.captureSets && data.captureSets.length > 0)
-			setKey(data.captureSets[0].id);
+		fetchEc2InstanceList().then((e) => {
+			setEc2InstanceList(getReactSelectOptions(e));
+		});
+		fetchRemoteIpList().then((e) => {
+			setRemoteIps(getReactSelectOptions(e));
+		});
+		fetchSessionData('id').then((data) => {
+			setSessionData(data);
+			if (data.captureSets && data.captureSets.length > 0)
+				setKey(data.captureSets[0].id);
+		});
 	}, []);
 
 	if (!sessionData) {
@@ -104,9 +116,7 @@ export function ModifySession() {
 											<FormGroup>
 												<Form.Label>EC2 Instance</Form.Label>
 												<Select
-													options={getReactSelectOptions(
-														SAMPLE_C2_INSTANCE_DATA
-													)}
+													options={ec2InstanceList}
 													defaultValue={getReactSelectOptions(
 														captureSet.ec2Instance
 													)}
@@ -114,6 +124,19 @@ export function ModifySession() {
 													onChange={(values) => {
 														const captureSets = sessionData.captureSets;
 														captureSets[index].ec2Instance = values;
+														handleChange({ captureSets });
+													}}
+												/>
+											</FormGroup>
+											<FormGroup>
+												<Form.Label>Remote Ips</Form.Label>
+												<Select
+													options={remoteIps}
+													defaultValue={getReactSelectOptions(captureSet.remoteIps)}
+													isMulti
+													onChange={(values) => {
+														const captureSets = sessionData.captureSets;
+														captureSets[index].remoteIps = values;
 														handleChange({ captureSets });
 													}}
 												/>

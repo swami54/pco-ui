@@ -1,0 +1,7 @@
+id: 'packet-capture-plugin/modify-session'
+classification: public
+version: 1.0.0
+interface:
+  description: |
+    Update a session
+main: './ModifySession'
