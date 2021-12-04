@@ -1,0 +1,127 @@
+{
+	"id": "packet-capture-plugin",
+	"hasLayers": true,
+	"manifestVersion": "4",
+	"extensions": {
+		"routes": [
+			{
+				"path": "listpackets",
+				"accessLevel": "GUEST",
+				"widget": {
+					"id": "packet-capture-plugin/listpackets",
+					"appScreen": "shell"
+				}
+			},
+			{
+				"path": "home",
+				"accessLevel": "GUEST",
+				"widget": {
+					"id": "packet-capture-plugin/home",
+					"appScreen": "shell"
+				}
+			},
+			{
+				"path": "sessions",
+				"accessLevel": "GUEST",
+				"widget": {
+					"id": "packet-capture-plugin/sessions",
+					"appScreen": "shell"
+				}
+			},
+			{
+				"path": "add-session",
+				"accessLevel": "GUEST",
+				"widget": {
+					"id": "packet-capture-plugin/add-session",
+					"appScreen": "shell"
+				}
+			},
+			{
+				"path": "delete-session",
+				"accessLevel": "GUEST",
+				"widget": {
+					"id": "packet-capture-plugin/delete-session",
+					"appScreen": "shell"
+				}
+			},
+			{
+				"path": "main-page",
+				"accessLevel": "GUEST",
+				"widget": {
+					"id": "packet-capture-plugin/main-page",
+					"appScreen": "shell"
+				}
+			},
+			{
+				"path": "modify-session",
+				"accessLevel": "GUEST",
+				"widget": {
+					"id": "packet-capture-plugin/modify-session",
+					"appScreen": "shell"
+				}
+			},
+			{
+				"path": "view-session",
+				"accessLevel": "GUEST",
+				"widget": {
+					"id": "packet-capture-plugin/view-session",
+					"appScreen": "shell"
+				}
+			}
+		]
+	},
+	"widgets": {
+		"packet-capture-plugin/home": {
+			"1.0.0": {
+				"descriptor": "packet-capture-plugin/js/widgets/home/widget"
+			}
+		},
+		"packet-capture-plugin/listpackets": {
+			"1.0.0": {
+				"descriptor": "packet-capture-plugin/js/widgets/listpackets/widget"
+			}
+		},
+		"packet-capture-plugin/sessions": {
+			"1.0.0": {
+				"descriptor": "packet-capture-plugin/js/widgets/sessions/widget"
+			}
+		},
+		"packet-capture-plugin/add-session": {
+			"1.0.0": {
+				"descriptor": "packet-capture-plugin/js/widgets/add-session/widget"
+			}
+		},
+		"packet-capture-plugin/delete-session": {
+			"1.0.0": {
+				"descriptor": "packet-capture-plugin/js/widgets/delete-session/widget"
+			}
+		},
+		"packet-capture-plugin/main-page": {
+			"1.0.0": {
+				"descriptor": "packet-capture-plugin/js/widgets/main-page/widget"
+			}
+		},
+		"packet-capture-plugin/modify-session": {
+			"1.0.0": {
+				"descriptor": "packet-capture-plugin/js/widgets/modify-session/widget"
+			}
+		},
+		"packet-capture-plugin/view-session": {
+			"1.0.0": {
+				"descriptor": "packet-capture-plugin/js/widgets/view-session/widget"
+			}
+		}
+	},
+	"dependencies": {
+		"widgets": [
+			"packet-capture-plugin/home@1.0.0",
+			"packet-capture-plugin/listpackets@1.0.0",
+			"packet-capture-plugin/sessions@1.0.0",
+			"packet-capture-plugin/add-session@1.0.0",
+			"packet-capture-plugin/delete-session@1.0.0",
+			"packet-capture-plugin/main-page@1.0.0",
+			"packet-capture-plugin/modify-session@1.0.0",
+			"packet-capture-plugin/view-session@1.0.0"
+		]
+	}
+}
