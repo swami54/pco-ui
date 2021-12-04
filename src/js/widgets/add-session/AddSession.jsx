@@ -9,20 +9,30 @@ import {
 	Button,
 	Container,
 } from 'react-bootstrap';
-import { AddIcon } from '../assets/AddIcon.jsx';
-import { DeleteIcon } from '../assets/DeleteIcon.jsx';
-import { SAMPLE_C2_INSTANCE_DATA, getReactSelectOptions, getSampleSessionData, uuid } from '../utils';
+import { AddIcon } from '../../../assets/AddIcon.jsx';
+import { DeleteIcon } from '../../../assets/DeleteIcon.jsx';
+import { SAMPLE_C2_INSTANCE_DATA, getReactSelectOptions, uuid } from '../../util/utils';
 import Select from 'react-select';
 
-export function ModifySession() {
+export function AddSession() {
 	const [sessionData, setSessionData] = useState();
 	const [key, setKey] = useState('');
 
 	useEffect(() => {
-		const data = getSampleSessionData();
+		const data = {
+			accountId: '',
+			vpc: '',
+			captureSets: [
+				{
+					ec2Instance: [],
+					remoteIps: '',
+					requestor: '',
+					id: uuid(),
+				},
+			],
+		};
 		setSessionData(data);
-		if (data.captureSets && data.captureSets.length > 0)
-			setKey(data.captureSets[0].id);
+		setKey(data.captureSets[0].id);
 	}, []);
 
 	if (!sessionData) {
@@ -40,6 +50,9 @@ export function ModifySession() {
 					console.log(sessionData);
 				}}
 			>
+				<Row>
+					<h3 className='mt-2 mb-4'>Add Session</h3>
+				</Row>
 				<Row className='SectionContainer'>
 					<Col>
 						<FormGroup>
@@ -107,9 +120,9 @@ export function ModifySession() {
 													options={getReactSelectOptions(
 														SAMPLE_C2_INSTANCE_DATA
 													)}
-													defaultValue={getReactSelectOptions(
-														captureSet.ec2Instance
-													)}
+													defaultValue={captureSet.ec2Instance.map((e) => {
+														return { value: e, label: e };
+													})}
 													isMulti
 													onChange={(values) => {
 														const captureSets = sessionData.captureSets;

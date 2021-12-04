@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Col, Container, Row } from 'react-bootstrap';
-import { ViewSessionData } from '../common/ViewSessionData';
-import { getSampleSessionData } from '../utils';
+import { ViewSessionData } from '../../common/ViewSessionData';
+import { getSampleSessionData } from '../../util/utils';
 
 export function DeleteSession() {
 	const [sessionData, setSessionData] = useState(undefined);
