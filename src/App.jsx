@@ -32,10 +32,10 @@ const AppRoutes = ({ setLoggedIn }) => {
 			<Container>
 				<Routes>
 					<Route path='/' element={<MainPage />} />
-					<Route path='/add' element={<AddSession />} />
-					<Route path='/modify/:id' element={<ModifySession />} />
-					<Route path='/view/:id' element={<ViewSession />} />
-					<Route path='/delete/:id' element={<DeleteSession />} />
+					<Route path='/add-session' element={<AddSession />} />
+					<Route path='/modify-session/:id' element={<ModifySession />} />
+					<Route path='/view-session/:id' element={<ViewSession />} />
+					<Route path='/delete-session/:id' element={<DeleteSession />} />
 				</Routes>
 			</Container>
 		</>

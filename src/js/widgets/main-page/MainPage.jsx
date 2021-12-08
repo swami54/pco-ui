@@ -29,11 +29,13 @@ export const MainPage = () => {
 			<Row className='mb-4 mt-2'>
 				<Col className='justify-between'>
 					<h3>Current Sessions</h3>
-					<AppNavLink to='/add' className='btn btn-primary'>
+					<AppNavLink to='/add-session' className='btn btn-primary'>
 						Setup Packet Capture
 					</AppNavLink>
 				</Col>
 			</Row>
+			<div>
+			</div>
 			{sessionList.length === 0 ? (
 				<h2>Loading...</h2>
 			) : (
@@ -73,7 +75,7 @@ const SessionsTableRow = ({ sessionData }) => {
 	return (
 		<>
 			<td>
-				<AppNavLink to={`/view/${sessionData.sessionId}`}>
+				<AppNavLink to={`/view-session/${sessionData.sessionId}`}>
 					{sessionData.sessionId}
 				</AppNavLink>
 			</td>
@@ -93,14 +95,14 @@ const SessionsTableRow = ({ sessionData }) => {
 			<td>
 				<AppNavLink
 					className='btn btn-primary'
-					to={`/modify/${sessionData.sessionId}`}
+					to={`/modify-session/${sessionData.sessionId}`}
 				>
 					Modify
 				</AppNavLink>
 			</td>
 			<td>
 				<AppNavLink
-					to={`/delete/${sessionData.sessionId}`}
+					to={`/delete-session/${sessionData.sessionId}`}
 					className=' btn btn-primary'
 				>
 					<DeleteIcon className='Icon' />
